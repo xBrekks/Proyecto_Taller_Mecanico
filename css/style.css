@@ -1,0 +1,431 @@
+/* ============================================================
+   MOTORFIX — Taller Mecánico
+   Paleta: Red Bull Racing  |  Fuentes: Barlow Condensed + Nunito
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Nunito:wght@300;400;600&display=swap');
+
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── Variables de color Red Bull Racing ── */
+:root {
+    --azul-profundo:   #0A0E24;   /* Navbar, footer */
+    --azul-medianoche: #1B1F3B;   /* Fondo body */
+    --morado-borde:    #3A1C5A;   /* Bordes, separadores */
+    --rojo-rb:         #E8002D;   /* Acento principal */
+    --amarillo-rb:     #F5A623;   /* Acento secundario */
+    --blanco:          #FFFFFF;   /* Texto principal */
+    --blanco-suave:    #CCCCDD;   /* Texto párrafos */
+    --gris-oscuro:     #55557A;   /* Texto terciario / copyright */
+    --fondo-body:      #1B1F3B;   /* Color base del body — CLAVE para el difuminado */
+}
+
+/* ── Tipografías ── */
+body {
+    font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+    background-color: var(--fondo-body);
+    color: var(--blanco-suave);
+}
+
+/* ============================================================
+   NAVBAR — Sticky
+   ============================================================ */
+.header.sticky {
+    position: sticky;
+    top: 0;
+    background-color: var(--azul-profundo);
+    border-bottom: 1px solid var(--morado-borde);
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    width: 100%;
+}
+
+.nav-links li {
+    flex: 1;
+    border-right: 1px solid var(--morado-borde);
+}
+
+.nav-links li:last-child {
+    border-right: none;
+}
+
+.nav-links a {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    color: var(--blanco-suave);
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s, background-color 0.2s;
+    /* Línea inferior animada */
+    border-bottom: 3px solid transparent;
+}
+
+.nav-links a:hover {
+    color: var(--blanco);
+    background-color: rgba(232, 0, 45, 0.08);
+    border-bottom-color: var(--rojo-rb);
+}
+
+/* Clase activo — agrégala por JS al item actual */
+.nav-links a.activo {
+    color: var(--blanco);
+    border-bottom-color: var(--rojo-rb);
+}
+
+/* ============================================================
+   SECCIÓN DEL SLIDE
+   ============================================================ */
+.slide-section {
+    position: relative;
+    width: 100%;
+    height: 45vh; /* <-- Cambia de 70vh a 40vh o 45vh para formato banner */
+    min-height: 300px; /* <-- Baja el mínimo para que no se estire */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.slide-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción de tus imágenes */
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.slide-image.active {
+    opacity: 1;
+}
+
+/* Flechas prev / next */
+.arrow {
+    background: transparent;
+    border: none;
+    font-size: 4rem;
+    color: var(--blanco);
+    cursor: pointer;
+    z-index: 4;
+    padding: 0 30px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    transition: color 0.2s, text-shadow 0.2s;
+    line-height: 1;
+    user-select: none;
+}
+
+.arrow:hover {
+    color: var(--rojo-rb);
+    text-shadow: 0 0 18px rgba(232, 0, 45, 0.7);
+}
+
+/* ── DIFUMINADO ──
+   El gradiente va de transparente al mismo color del body (#1B1F3B)
+   para que el slide se "funda" suavemente con la sección siguiente.
+   Este valor DEBE coincidir con --fondo-body si cambias el color.      */
+.fade-overlay {
+    /* display: none; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Antes estaba en 220px, al reducirlo ya no sube hasta el texto */
+    background: linear-gradient(
+        to bottom,
+        rgba(27, 31, 59, 0)   0%,
+        rgba(27, 31, 59, 0.8) 60%,
+        rgba(27, 31, 59, 1)   100%
+    );
+    z-index: 3;
+    pointer-events: none;
+}
+.fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /* Altura muy pequeña para que no alcance a subir hasta el texto */
+    background: linear-gradient(
+        to bottom,
+        rgba(27, 31, 59, 0) 0%,
+        rgba(27, 31, 59, 0.1) 70%, /* Se mantiene transparente casi todo el trayecto */
+        rgba(27, 31, 59, 1) 100%  /* Solo se vuelve sólido al tocar el borde final */
+    );
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ============================================================
+   SECCIÓN DE TEXTO (debajo del slide)
+   ============================================================ */
+.text-section {
+    position: relative;
+    padding: 40px 20px 60px 20px;
+    text-align: center;
+    z-index: 5;
+    background-color: var(--fondo-body);
+}
+
+.text-lines {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.text-lines p {
+    margin-bottom: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--blanco-suave);
+    line-height: 1.75;
+}
+
+/* ============================================================
+   FOOTER — Redes Sociales + Contacto
+   ============================================================ */
+.footer {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--azul-profundo);
+    border-top: 1px solid var(--morado-borde);
+}
+
+/* Los 3 cuadros de redes sociales */
+.social-boxes {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.social-box {
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--rojo-rb);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--blanco);
+    cursor: pointer;
+    background-color: transparent;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.social-box:hover {
+    background-color: var(--rojo-rb);
+    border-color: var(--rojo-rb);
+    color: var(--blanco);
+    transform: translateY(-3px);
+}
+
+/* Información de contacto */
+.contact-info {
+    text-align: left;
+    width: 100%;
+    max-width: 350px;
+}
+
+.contact-info p {
+    margin-bottom: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--blanco-suave);
+    line-height: 1.6;
+}
+
+.contact-info strong {
+    color: var(--rojo-rb);
+    font-weight: 600;
+}
+
+/* ============================================================
+   UTILIDADES
+   ============================================================ */
+
+/* Scrollbar personalizado (opcional, solo Chrome/Edge) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--azul-profundo); }
+::-webkit-scrollbar-thumb { background: var(--morado-borde); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rojo-rb); }
+
+/* ============================================================
+   DISEÑO RESPONSIVO (MÓVIL)
+   ============================================================ */
+
+/* Ocultar elementos móviles por defecto (vista de escritorio) */
+.menu-toggle, .header-brand, .mobile-menu-drawer {
+    display: none;
+}
+
+@media (max-width: 1080px) {
+    /* Ocultar el menú de escritorio */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Ajustar el header para móvil */
+    .header.sticky {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    /* Estilos del botón hamburguesa */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--blanco);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    /* Estilos del logo y nombre en el header */
+    .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--blanco);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .header-logo-circle {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 2px solid var(--rojo-rb);
+        background-color: var(--fondo-body);
+    }
+
+    /* --- Menú Lateral (Drawer) --- */
+    .mobile-menu-drawer {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: var(--azul-profundo);
+        border-right: 2px solid var(--rojo-rb);
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        z-index: 2000;
+        /* Efecto de entrada lateral */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Clase que se activa con JS para mostrar el menú */
+    .mobile-menu-drawer.open {
+        transform: translateX(0);
+    }
+
+    .drawer-header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--morado-borde);
+        color: var(--blanco);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.5rem;
+    }
+
+    .close-btn {
+        background: none;
+        border: 1px solid var(--blanco);
+        color: var(--blanco);
+        padding: 5px 12px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .drawer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .drawer-links li {
+        border-bottom: 1px solid var(--morado-borde);
+    }
+
+    .drawer-links a {
+        display: block;
+        padding: 20px;
+        color: var(--blanco-suave);
+        text-decoration: none;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+    }
+
+    .drawer-footer {
+        margin-top: auto; /* Empuja el contenedor del logo hasta abajo */
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid var(--morado-borde);
+    }
+
+    .drawer-logo-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid var(--amarillo-rb);
+        background-color: var(--fondo-body);
+    }
+
+    /* Ajustar la altura del slider para evitar que se vea muy alargado en móvil */
+    .slide-section {
+        height: 30vh; 
+        min-height: 220px;
+    }
+    
+    /* Achicar el círculo del centro del slider en móvil */
+    .center-circle {
+        width: 100px;
+        height: 100px;
+    }
+}

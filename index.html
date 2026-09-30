@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pit Stop Performance - Taller Mecánico</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menú Sticky -->
+    <header class="header sticky">
+        <!-- Elementos móviles: Botón hamburguesa, Logo circular y Nombre -->
+        <button class="menu-toggle" id="btnMenu">☰</button>
+        <div class="header-brand">
+            <div class="header-logo-circle"></div>
+            <span class="header-title">Pit Stop Performance</span>
+        </div>
+
+        <!-- Navegación Escritorio -->
+        <nav class="navbar desktop-nav">
+            <ul class="nav-links">
+                <li><a href="#inicio" class="activo">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Menú Lateral Desplegable (Móvil) -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <button class="close-btn" id="btnClose">X</button>
+            <span>Menú</span>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+        <div class="drawer-footer">
+            <!-- Círculo para el logo inferior del boceto -->
+            <div class="drawer-logo-circle"></div>
+        </div>
+    </div>
+    <!-- Sección del Slide -->
+    <section class="slide-section" id="inicio">
+        <button class="arrow left-arrow">&lt;</button>
+
+        <div class="slide-container">
+            <!-- Usamos divs en lugar de imgs, y el CSS hará el trabajo -->
+            <img src="img/pit_stop_slider_1.png" alt="Servicios Pit Stop" class="slide-image active">
+            <img src="img/pit_stop_slider_2.png" alt="Promociones Especiales" class="slide-image">
+            <img src="img/pit_stop_slider_3.png" alt="Tu confianza nos impulsa" class="slide-image">
+
+            <!-- Círculo central del boceto -->
+            <div class="center-circle"></div>
+        </div>
+
+        <button class="arrow right-arrow">&gt;</button>
+
+        <!-- Efecto difuminado que se fusiona con el fondo #1B1F3B -->
+        <div class="fade-overlay"></div>
+    </section>
+
+    <!-- Sección de Texto -->
+    <section class="text-section" id="nosotros">
+        <div class="text-lines">
+            <p>Bienvenido a Pit Stop Performance, tu taller mecánico de confianza. Nos especializamos en diagnóstico, reparación y mantenimiento preventivo.</p>
+            <p>Contamos con tecnología de punta y un equipo altamente capacitado para garantizar el mejor rendimiento de tu vehículo.</p>
+            <p>Trabajamos con todas las marcas y modelos, brindando un servicio rápido, transparente y con garantía.</p>
+        </div>
+    </section>
+
+    <!-- Footer / Redes y Contacto -->
+    <footer class="footer">
+        <!-- Cuadros de Redes Sociales -->
+        <div class="social-boxes">
+            <div class="social-box">FB</div>
+            <div class="social-box">TW</div>
+            <div class="social-box">IG</div>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="contact-info">
+            <p><strong>Tel.</strong> 777-109-12-49</p>
+            <p><strong>Dir.</strong> Av. de los Temixco #123, Centro</p>
+            <p><strong>Correo.</strong> contacto@motoreros.com</p>
+        </div>
+    </footer>
+
+    <!-- Archivo JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
