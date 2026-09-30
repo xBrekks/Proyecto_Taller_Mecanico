@@ -297,6 +297,27 @@ body {
     .desktop-nav {
         display: none;
     }
+    /* --- Capa de fondo oscuro y borroso --- */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(10, 14, 36, 0.6); /* Color azul profundo semitransparente */
+        backdrop-filter: blur(5px); /* Efecto de desenfoque */
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 1500; /* Queda por debajo del menú (2000) pero por encima de la página */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Clase que se activa con JS para mostrar la capa */
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
 
     /* Ajustar el header para móvil */
     .header.sticky {
@@ -419,13 +440,25 @@ body {
 
     /* Ajustar la altura del slider para evitar que se vea muy alargado en móvil */
     .slide-section {
-        height: 30vh; 
-        min-height: 220px;
+        height: auto; 
+        min-height: 150px; /* Reducimos drásticamente la altura mínima */
+        aspect-ratio: 3 / 1; /* Forza al contenedor a ser rectangular (ancho) */
     }
     
     /* Achicar el círculo del centro del slider en móvil */
     .center-circle {
         width: 100px;
         height: 100px;
+    }
+    .slide-image {
+        object-fit: contain; /* Muestra toda la imagen sin importar la pantalla */
+        background-color: var(--fondo-body); /* Fondo por si sobra espacio arriba o abajo */
+    }
+    .arrow {
+        font-size: 2rem; /* Letra más pequeña */
+        padding: 0 5px;  /* Más pegadas a la orilla */
+    }
+    .fade-overlay {
+        display: none;
     }
 }
