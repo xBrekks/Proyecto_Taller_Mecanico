@@ -273,6 +273,14 @@ body {
     font-weight: 600;
 }
 
+.center-logo {
+        position: absolute;
+        width: 220px; /* Ajusta el tamaño según prefieras */
+        height: auto;
+        z-index: 2;
+        filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.6));
+}
+
 /* ============================================================
    UTILIDADES
    ============================================================ */
@@ -346,14 +354,6 @@ body {
         font-family: 'Barlow Condensed', sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-    }
-
-    .header-logo-circle {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        border: 2px solid var(--rojo-rb);
-        background-color: var(--fondo-body);
     }
 
     /* --- Menú Lateral (Drawer) --- */
@@ -430,26 +430,34 @@ body {
         border-top: 1px solid var(--morado-borde);
     }
 
-    .drawer-logo-circle {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 2px solid var(--amarillo-rb);
-        background-color: var(--fondo-body);
-    }
-
     /* Ajustar la altura del slider para evitar que se vea muy alargado en móvil */
     .slide-section {
         height: auto; 
         min-height: 150px; /* Reducimos drásticamente la altura mínima */
         aspect-ratio: 3 / 1; /* Forza al contenedor a ser rectangular (ancho) */
     }
-    
-    /* Achicar el círculo del centro del slider en móvil */
-    .center-circle {
-        width: 100px;
-        height: 100px;
+
+    /* Logo de la barra superior */
+    .header-logo {
+        width: 45px;
+        height: auto;
+        object-fit: contain;
     }
+
+    /* Logo de la parte inferior del menú lateral */
+    .drawer-logo {
+        width: 120px;
+        height: auto;
+        margin: 0 auto;
+        object-fit: contain;
+    }
+
+    /* Achicar el logo central del slider en móvil (si decides dejarlo) */
+    .center-logo {
+        width: 140px;
+    }
+    
+    
     .slide-image {
         object-fit: contain; /* Muestra toda la imagen sin importar la pantalla */
         background-color: var(--fondo-body); /* Fondo por si sobra espacio arriba o abajo */
