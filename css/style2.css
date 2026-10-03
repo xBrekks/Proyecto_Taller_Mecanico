@@ -1,0 +1,209 @@
+/* ============================================================
+   STYLES2.CSS — Exclusivo para la página "Nosotros"
+   ============================================================ */
+
+.nosotros-section {
+    background-color: var(--fondo-body);
+    color: var(--blanco-suave);
+    padding-top: 60px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.5rem;
+    color: var(--blanco);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+}
+
+.section-title.left-align {
+    text-align: left;
+}
+
+/* --- 1. Quiénes Somos --- */
+.quienes-somos {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 60px;
+}
+
+.quienes-somos p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* --- 2. Misión, Visión, Valores --- */
+.mvv-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.mvv-box {
+    flex: 1;
+    background-color: var(--azul-profundo);
+    border: 1px solid var(--morado-borde);
+    border-top: 4px solid var(--rojo-rb);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.mvv-box h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    color: var(--amarillo-rb);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.mvv-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sonrisas-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem;
+    color: var(--blanco);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.mascota-circle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid var(--rojo-rb);
+    background-color: var(--azul-profundo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 0 25px rgba(232, 0, 45, 0.4);
+}
+
+.mascota-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.valores-box {
+    width: 100%;
+    border-top: 4px solid var(--amarillo-rb);
+}
+
+/* --- 3. Historia (Scrolltelling) --- */
+.historia-viewport {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, var(--fondo-body), var(--azul-profundo));
+    padding: 60px 0;
+}
+
+.historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.historia-img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.historia-circle-img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--morado-borde);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* --- Línea de tiempo --- */
+.timeline {
+    list-style: none;
+    border-left: 3px solid var(--rojo-rb);
+    padding-left: 30px;
+    margin-top: 30px;
+}
+
+.timeline li {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--amarillo-rb);
+    border: 3px solid var(--fondo-body);
+}
+
+.timeline .year {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    color: var(--rojo-rb);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.timeline p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   DISEÑO RESPONSIVO (MÓVILES) PARA NOSOTROS
+   ============================================================ */
+@media (max-width: 1080px) {
+    .mvv-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .historia-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .historia-viewport {
+        min-height: auto;
+    }
+
+    .section-title.left-align {
+        text-align: center;
+    }
+
+    .timeline {
+        text-align: left;
+    }
+}
